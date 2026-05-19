@@ -30,6 +30,11 @@
             <p class="mt-3">Your comfort is our top priority</p>
         </div>
     </div>
+    </style>
+</head>
+
+<body>
+    <?php include 'header.php'; ?>
 </body>
 
 </html>
