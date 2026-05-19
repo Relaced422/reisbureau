@@ -1,6 +1,6 @@
 <header class="bg-[#A3C7A7] flex items-center justify-between px-6 py-4">
     <a href="index.php">
-        <img src="img/logo.png" alt="HighFlights logo" class="w-[220px] max-w-full">
+        <img src="img/parts/logo.png" alt="HighFlights logo" class="w-[220px] max-w-full">
     </a>
 
     <nav>
@@ -36,7 +36,7 @@
     </nav>
 
     <a href="__PLACEHOLDER__">
-        <img src="img/loginButton.png" alt="Login Button"
+        <img src="img/parts/loginButton.png" alt="Login Button"
             class="w-[220px] max-w-full transition-transform duration-300 hover:scale-105">
     </a>
 </header>
