@@ -20,7 +20,7 @@
             </li>
 
             <li>
-                <a href="#"
+                <a href="/aboutus.php"
                     class="block rounded-full bg-[#78B183] px-6 py-3 transition-all duration-300 hover:scale-105 hover:bg-[#497F53]">
                     About Us
                 </a>
@@ -35,7 +35,7 @@
         </ul>
     </nav>
 
-    <a href="__PLACEHOLDER__">
+    <a href="loginpage.php">
         <img src="img/parts/loginButton.png" alt="Login Button"
             class="w-[180px] max-w-full transition-transform duration-300 hover:scale-105">
     </a>

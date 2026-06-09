@@ -36,6 +36,7 @@
                 </div>
             </div>
         </section>
+        
         <?php include 'includes/searchbar.php'; ?>
     </main>
 </body>
