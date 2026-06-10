@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (login($email, $password)) {
         // Stuur admin door naar panel, klant naar account
         if (isAdmin()) {
-            header('Location: /admin/a_index.php');
+            header('Location: /a_index.php');
         } else {
             header('Location: /account.php');
         }
