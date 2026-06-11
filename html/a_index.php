@@ -59,27 +59,27 @@ if (!isset($_SESSION['userId'])) {
                         <div class="grid grid-cols-3 gap-3">
                             <div class="form-group">
                                 <label>Bestemming</label>
-                                <input type="text" name="destination_name" value="Finland" />
+                                <input type="text" name="destination_name" value="Finland" class="bg-white text-center"/>
                             </div>
                             <div class="form-group">
                                 <label>Luchtvaartmaatschappij</label>
-                                <input type="text" name="airline" value="GreenAir" />
+                                <input type="text" name="airline" value="GreenAir" class="bg-white text-center"/>
                             </div>
                             <div class="form-group">
                                 <label>Prijs p.p. (€)</label>
-                                <input type="number" name="price" step="0.01" value="634.00" />
+                                <input type="number" name="price" step="0.01" value="634.00" class="bg-white text-center"/>
                             </div>
                             <div class="form-group">
                                 <label>Vertrekdatum heen</label>
-                                <input type="datetime-local" name="departure_date" value="2025-06-20T10:25" />
+                                <input type="datetime-local" name="departure_date" value="2025-06-20T10:25" class="bg-white text-center"/>
                             </div>
                             <div class="form-group">
                                 <label>Returdatum</label>
-                                <input type="datetime-local" name="return_date" value="2025-06-27T18:00" />
+                                <input type="datetime-local" name="return_date" value="2025-06-27T18:00" class="bg-white text-center"/>
                             </div>
                             <div class="form-group">
                                 <label>Stoelen</label>
-                                <input type="number" name="seats" value="180" />
+                                <input type="number" name="seats" value="180" class="bg-white text-center"/>
                             </div>
                         </div>
 
@@ -87,7 +87,7 @@ if (!isset($_SESSION['userId'])) {
                             <label class="flex items-center gap-2 text-sm">
                                 <input type="checkbox" name="active" value="1" checked /> Actief
                             </label>
-                            <button type="submit" class="btn btn-primary">💾 Opslaan</button>
+                            <button type="submit" class="btn btn-primary bg-green-500">💾 Opslaan</button>
                         </div>
                     </form>
 
@@ -116,27 +116,27 @@ if (!isset($_SESSION['userId'])) {
                     <div class="grid grid-cols-2 gap-3">
                         <div class="form-group">
                             <label>Bestemming</label>
-                            <input type="text" name="destination_name" placeholder="Finland" required />
+                            <input type="text" name="destination_name" placeholder="Finland" required class="bg-gray-200 text-center"/>
                         </div>
                         <div class="form-group">
                             <label>Luchtvaartmaatschappij</label>
-                            <input type="text" name="airline" placeholder="GreenAir" required />
+                            <input type="text" name="airline" placeholder="GreenAir" required class="bg-gray-200 text-center"/>
                         </div>
                         <div class="form-group">
                             <label>Vertrekdatum heen</label>
-                            <input type="datetime-local" name="departure_date" required />
+                            <input type="datetime-local" name="departure_date" required class="bg-gray-200 text-center"/>
                         </div>
                         <div class="form-group">
                             <label>Returdatum</label>
-                            <input type="datetime-local" name="return_date" required />
+                            <input type="datetime-local" name="return_date" required class="bg-gray-200 text-center"/>
                         </div>
                         <div class="form-group">
                             <label>Prijs p.p. (€)</label>
-                            <input type="number" name="price" step="0.01" min="0" placeholder="634.00" required />
+                            <input type="number" name="price" step="0.01" min="0" placeholder="634.00" required class="bg-gray-200 text-center"/>
                         </div>
                         <div class="form-group">
                             <label>Stoelen</label>
-                            <input type="number" name="seats" min="1" value="180" />
+                            <input type="number" name="seats" min="1" value="180" class="bg-gray-200 text-center"/>
                         </div>
                     </div>
 
