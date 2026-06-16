@@ -31,6 +31,7 @@ $flights = $stmt->fetchAll();
 
   <?php include __DIR__ . '/includes/header.php'; ?>
 
+  <?php include __DIR__ . '/includes/searchbar.php'; ?>
   <section class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
       <h1 class="text-2xl md:text-3xl font-bold text-[#2e5435] mb-2" style="font-family:'Kadwa',serif;">
