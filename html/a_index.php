@@ -143,7 +143,7 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
                                             class="bg-white text-center" />
                                     </div>
                                     <div class="form-group">
-                                        <label>Returdatum</label>
+                                        <label>Retourdatum</label>
                                         <input type="datetime-local" name="return_date"
                                             value="<?= date('Y-m-d\TH:i', strtotime($f['return_date'])) ?>"
                                             class="bg-white text-center" />
