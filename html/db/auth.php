@@ -1,0 +1,71 @@
+<?php
+
+require_once __DIR__ . '/db.php';
+
+// Start sessie als dat nog niet gebeurd is
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+function login(string $email, string $password): bool {
+    $pdo  = getDB();
+    $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1');
+    $stmt->execute([$email, $password]);
+    $user = $stmt->fetch();
+
+    if ($user) {
+        $_SESSION['user_id']   = $user['id'];
+        $_SESSION['user_name'] = $user['first_name'];
+        $_SESSION['user_role'] = $user['role'];
+        return true;
+    }
+
+    return false;
+}
+
+function logout(): void {
+    session_destroy();
+    header('Location: /login.php');
+    exit;
+}
+
+function isLoggedIn(): bool {
+    return isset($_SESSION['user_id']);
+}
+
+function isAdmin(): bool {
+    return isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+}
+
+function requireLogin(): void {
+    if (!isLoggedIn()) {
+        header('Location: /login.php');
+        exit;
+    }
+}
+
+function requireAdmin(): void {
+    if (!isAdmin()) {
+        header('Location: /index.php');
+        exit;
+    }
+}
+
+function register(array $data): bool {
+    $pdo = getDB();
+
+    $check = $pdo->prepare('SELECT id FROM users WHERE email = ?');
+    $check->execute([$data['email']]);
+    if ($check->fetch()) {
+        return false;
+    }
+
+    $stmt = $pdo->prepare('INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)');
+
+    return $stmt->execute([
+        $data['first_name'],
+        $data['last_name'],
+        $data['email'],
+        $data['password'],
+    ]);
+}

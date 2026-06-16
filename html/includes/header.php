@@ -13,30 +13,38 @@
             </li>
 
             <li>
-                <a href="#"
+                <a href="destinations.php"
                     class="block rounded-full bg-[#78B183] px-6 py-3 transition-all duration-300 hover:scale-105 hover:bg-[#497F53]">
                     Destinations
                 </a>
             </li>
 
             <li>
-                <a href="#"
+                <a href="aboutus.php"
                     class="block rounded-full bg-[#78B183] px-6 py-3 transition-all duration-300 hover:scale-105 hover:bg-[#497F53]">
                     About Us
                 </a>
             </li>
 
             <li>
-                <a href="#"
+                <a href="contact.php"
                     class="block rounded-full bg-[#78B183] px-6 py-3 transition-all duration-300 hover:scale-105 hover:bg-[#497F53]">
                     Contact
                 </a>
             </li>
         </ul>
     </nav>
-
-    <a href="__PLACEHOLDER__">
-        <img src="img/parts/loginButton.png" alt="Login Button"
-            class="w-[180px] max-w-full transition-transform duration-300 hover:scale-105">
-    </a>
+    <? if (!isLoggedIn()) { ?>
+        <a href="login.php">
+            <div class="w-[180px] max-w-full transition-transform duration-300 hover:scale-105 px-5 py-3 rounded-xl bg-[#497F53] flex justify-center">
+                Log in
+            </div>
+        </a>
+    <? } else { ?>
+        <a href="logout.php">
+            <div class="w-[180px] max-w-full transition-transform duration-300 hover:scale-105 px-5 py-3 rounded-xl bg-[#497F53] flex justify-center">
+                Log uit
+            </div>
+        </a>
+    <? } ?>
 </header>
