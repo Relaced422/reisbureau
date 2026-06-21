@@ -6,6 +6,7 @@ $pdo = getDB();
 $flights = $pdo->query('SELECT * FROM flights WHERE active = 1 ORDER BY price ASC LIMIT 4')->fetchAll();
 $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY created_at DESC LIMIT 3')->fetchAll();
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -40,7 +41,7 @@ $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY creat
     <p class="text-gray-500 mb-10">Hand-selected destinations where the calm continues long after you've landed.</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <?php foreach ($flights as $f): ?>
+      <?php foreach ($flights as $f){  ?>
       <a href="flight-detail.html" class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col no-underline">
         <div class="bg-[#2e5435] h-32 flex items-center justify-center text-5xl">✈️</div>
         <div class="p-5 flex flex-col flex-1">
@@ -52,7 +53,7 @@ $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY creat
           </div>
         </div>
       </a>
-      <?php endforeach; ?>
+      <?php }; ?>
 
       <?php if (empty($flights)): ?>
       <p class="text-gray-400 col-span-4">Momenteel geen vluchten beschikbaar.</p>
