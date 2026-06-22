@@ -11,12 +11,11 @@ function getDB(): PDO {
 
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,  // Gooi een exception bij fouten
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,        // Geef rijen terug als associatieve array
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,        // Geef rijen terug als associatieve array?? (Gewoon resultaten vorm)
             PDO::ATTR_EMULATE_PREPARES   => false,                   // Gebruik echte prepared statements
         ];
 
         $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
     }
-
     return $pdo;
 }

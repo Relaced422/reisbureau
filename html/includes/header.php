@@ -1,34 +1,30 @@
-<header class="bg-[#A3C7A7] flex flex-col md:flex-row items-center justify-between px-6 py-4 gap-4">
+<header class="bg-[#A3C7A7] flex flex-col md:flex-row items-center justify-between px-4 py-3 gap-3 border-b-2 border-[#78B183]">
     <a href="index.php">
-        <img src="img/parts/logo.png" alt="HighFlights logo" class="w-[180px] max-w-full">
+        <img src="img/parts/logo.png" alt="HighFlights logo" class="w-[160px] max-w-full">
     </a>
 
     <nav>
-        <ul class="kadwa flex flex-wrap justify-center items-center gap-3 text-xl text-white">
+        <ul class="kadwa flex flex-wrap justify-center items-center gap-2 text-lg text-white">
             <li>
-                <a href="index.php"
-                    class="block rounded-full bg-[#78B183] px-6 py-3 transition-all duration-300 hover:scale-105 hover:bg-[#497F53]">
+                <a href="index.php" class="block rounded bg-[#78B183] px-4 py-2 hover:bg-[#497F53]">
                     Home
                 </a>
             </li>
 
             <li>
-                <a href="destinations.php"
-                    class="block rounded-full bg-[#78B183] px-6 py-3 transition-all duration-300 hover:scale-105 hover:bg-[#497F53]">
+                <a href="destinations.php" class="block rounded bg-[#78B183] px-4 py-2 hover:bg-[#497F53]">
                     Destinations
                 </a>
             </li>
 
             <li>
-                <a href="aboutus.php"
-                    class="block rounded-full bg-[#78B183] px-6 py-3 transition-all duration-300 hover:scale-105 hover:bg-[#497F53]">
+                <a href="aboutus.php" class="block rounded bg-[#78B183] px-4 py-2 hover:bg-[#497F53]">
                     About Us
                 </a>
             </li>
 
             <li>
-                <a href="contact.php"
-                    class="block rounded-full bg-[#78B183] px-6 py-3 transition-all duration-300 hover:scale-105 hover:bg-[#497F53]">
+                <a href="contact.php" class="block rounded bg-[#78B183] px-4 py-2 hover:bg-[#497F53]">
                     Contact
                 </a>
             </li>
@@ -36,13 +32,13 @@
     </nav>
     <? if (!isLoggedIn()) { ?>
         <a href="login.php">
-            <div class="w-[180px] max-w-full transition-transform duration-300 hover:scale-105 px-5 py-3 rounded-xl bg-[#497F53] flex justify-center">
+            <div class="px-4 py-2 rounded bg-[#497F53] text-white">
                 Log in
             </div>
         </a>
     <? } else { ?>
         <a href="logout.php">
-            <div class="w-[180px] max-w-full transition-transform duration-300 hover:scale-105 px-5 py-3 rounded-xl bg-[#497F53] flex justify-center">
+            <div class="px-4 py-2 rounded bg-[#497F53] text-white">
                 Log uit
             </div>
         </a>
