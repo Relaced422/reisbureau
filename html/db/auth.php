@@ -2,13 +2,15 @@
 
 require_once __DIR__ . '/db.php';
 
-// Start sessie als dat nog niet gebeurd is
+// Start sessie als dat nog niet gebeurd is (AI suggestie)
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-function login(string $email, string $password): bool {
+// (AI suggestie over dat het beter een functie kan zijn)
+function login(string $email, string $password): bool { 
     $pdo  = getDB();
+    // Nog geen tijd gehad voor password hashing
     $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1');
     $stmt->execute([$email, $password]);
     $user = $stmt->fetch();
@@ -26,6 +28,7 @@ function login(string $email, string $password): bool {
 function logout(): void {
     session_destroy();
     header('Location: /login.php');
+    // Directe exit voor mogelijke script errors
     exit;
 }
 
@@ -34,9 +37,11 @@ function isLoggedIn(): bool {
 }
 
 function isAdmin(): bool {
-    return isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+    return ($_SESSION['user_role'] === 'admin');
+    // Dubbele true
 }
 
+// User handler - terug sturen
 function requireLogin(): void {
     if (!isLoggedIn()) {
         header('Location: /login.php');
@@ -44,6 +49,7 @@ function requireLogin(): void {
     }
 }
 
+// User handler - terug sturen
 function requireAdmin(): void {
     if (!isAdmin()) {
         header('Location: /index.php');
