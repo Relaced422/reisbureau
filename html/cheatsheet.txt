@@ -1,0 +1,57 @@
+ * TAGS
+ *   <?php        logic blocks
+ *   <?=          short echo output
+ *
+ * OUTPUT & ESCAPING
+ *   htmlspecialchars()            escape output
+ *   number_format($n, 2, ',', '.') format price
+ *   str_repeat()                  repeat string (used for stars)
+ *
+ * DATE & TIME
+ *   date('d M Y', strtotime())    display date
+ *   date('d-m-Y', strtotime())    display date (admin)
+ *   date('Y-m-d\TH:i', strtotime()) fill datetime-local input
+ *
+ * STRINGS
+ *   trim()                        strip whitespace
+ *
+ * CHECKS
+ *   isset()                       check if variable/key exists
+ *   empty()                       check if empty
+ *   in_array()                    check value in array
+ *
+ * DATABASE
+ *   getDB()                       get PDO instance
+ *   $pdo->query()                 direct query (no user input)
+ *   $pdo->prepare()               prepared statement
+ *   $stmt->execute([])            run with parameters
+ *   $stmt->fetch()                single row
+ *   $stmt->fetchAll()             all rows
+ *
+ * AUTH & SESSION
+ *   requireLogin()                redirect if not logged in
+ *   requireAdmin()                redirect if not admin
+ *   isLoggedIn()                  returns bool
+ *   isAdmin()                     returns bool
+ *   login()                       sets session, returns bool
+ *   logout()                      destroys session
+ *   register()                    inserts user, returns bool
+ *   $_SESSION['user_id']
+ *   $_SESSION['user_name']
+ *   $_SESSION['user_role']
+ *
+ * HTTP
+ *   header('Location: /page.php') redirect
+ *   exit                          stop script
+ *   $_POST['key']                 form data
+ *   $_GET['key']                  url parameters
+ *   $_SERVER['REQUEST_METHOD']
+ *
+ * INCLUDES
+ *   require_once                  functions/db files
+ *   include                       header/footer/partials
+ *   __DIR__                       current directory path
+ *
+ * CASTING
+ *   (int)$value                   cast to integer
+ */

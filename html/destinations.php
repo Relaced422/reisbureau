@@ -49,7 +49,7 @@ $flights = $stmt->fetchAll();
           $total_price = $f['price'] * $travelers;
         ?>
 
-          <a href="flight-detail.html?id=<?php echo $f['id']; ?>"
+          <a href="flight-detail.php?id=<?php echo $f['id']; ?>"
             class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col no-underline">
             <div class="bg-[#2e5435] h-32 flex items-center justify-center text-5xl">✈️</div>
             <div class="p-5 flex flex-col flex-1">
