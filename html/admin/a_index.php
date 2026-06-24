@@ -18,7 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['return_date'],
             $_POST['airline'],
             $_POST['price'],
+            // inhoud anders 180
             $_POST['seats'] ?? 180,
+            // if (isset($_POST['active'])) {
+            //     $active = 1;
+            // } else {
+            //     $active = 0;
+            // }
             isset($_POST['active']) ? 1 : 0
         ]);
     }
@@ -103,7 +109,7 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
                         if ($f['active']) {
                             $activeChecked = 'checked';
                         }
-                    ?>
+                        ?>
                         <div class="bg-white border border-[#C8DFC9] rounded-xl overflow-hidden">
 
                             <div class="grid grid-cols-4 items-center gap-4 p-5">
@@ -186,7 +192,7 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
                             </form>
 
                         </div>
-                    <?
+                        <?
                     }
                     ?>
 
@@ -287,7 +293,7 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
                                 if ($b['status'] === 'cancelled') {
                                     $cancelledSelected = 'selected';
                                 }
-                            ?>
+                                ?>
                                 <tr class="border-t border-[#C8DFC9]">
                                     <td class="p-3 font-bold text-[#2e5435]"><?= htmlspecialchars($b['reference']) ?></td>
                                     <td class="p-3"><?= htmlspecialchars($b['user_name']) ?></td>
@@ -310,7 +316,7 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
                                         </form>
                                     </td>
                                 </tr>
-                            <?
+                                <?
                             }
                             ?>
 

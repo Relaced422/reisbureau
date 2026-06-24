@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<?php include __DIR__ . '/includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -39,36 +38,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-<main style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--off-white);padding:40px 16px;">
-  <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:40px 36px;width:100%;max-width:420px;box-shadow:var(--shadow);">
-    <a href="/index.php" class="logo" style="display:inline-block;margin-bottom:28px;">
-      <span class="logo-pill">🌿 HighFlights</span>
-    </a>
-    <h1 style="font-size:1.4rem;font-weight:700;color:var(--dark-green);margin-bottom:6px;">Log in</h1>
-    <p style="font-size:0.88rem;color:var(--muted);margin-bottom:24px;">Nog geen account? <a href="/register.php" style="color:var(--dark-green);font-weight:600;">Registreer je hier ›</a></p>
+<main class="min-h-screen flex items-center justify-center bg-[#f8f5ef] px-4 py-8">
+  <div class="bg-white border border-gray-300 p-6 w-full max-w-sm">
+    <a href="/index.php" class="block mb-5 font-bold text-[#2e5435]">HighFlights</a>
+    <h1 class="text-xl font-bold text-[#2e5435] mb-1">Log in</h1>
+    <p class="text-sm text-gray-500 mb-5">Nog geen account? <a href="/register.php" class="text-[#2e5435] font-semibold">Registreer je hier ›</a></p>
 
     <?php if ($error !== ''): ?>
-      <div style="background:#fef2f2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:12px 16px;font-size:0.875rem;margin-bottom:20px;">
+      <div class="bg-red-50 border border-red-300 text-red-700 px-4 py-3 text-sm mb-4">
         <?= htmlspecialchars($error) ?>
       </div>
     <?php endif; ?>
 
-    <form action="/login.php" method="post" novalidate>
-      <div class="form-group" style="margin-bottom:16px;">
-        <label for="email" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:6px;color:var(--dark-green);">E-mailadres</label>
+    <form action="/login.php" method="post" novalidate class="flex flex-col gap-3">
+      <div>
+        <label for="email" class="block text-sm font-semibold text-[#2e5435] mb-1">E-mailadres</label>
         <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email"
                value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-               style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:0.9rem;outline:none;" />
+               class="w-full border border-gray-300 px-3 py-2 text-sm" />
       </div>
-      <div class="form-group" style="margin-bottom:8px;">
-        <label for="password" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:6px;color:var(--dark-green);">Wachtwoord</label>
+      <div>
+        <label for="password" class="block text-sm font-semibold text-[#2e5435] mb-1">Wachtwoord</label>
         <input type="password" id="password" name="password" placeholder="Jouw wachtwoord" required autocomplete="current-password"
-               style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:0.9rem;outline:none;" />
+               class="w-full border border-gray-300 px-3 py-2 text-sm" />
       </div>
-      <div style="text-align:right;margin-bottom:24px;">
-        <a href="/forgot-password.html" style="font-size:0.82rem;color:var(--muted);">Wachtwoord vergeten?</a>
+      <div class="text-right">
+        <a href="/forgot-password.html" class="text-xs text-gray-400">Wachtwoord vergeten?</a>
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%;padding:12px;">Inloggen</button>
+      <button type="submit" class="bg-[#2e5435] hover:bg-[#1e3b24] text-white font-bold py-2 rounded text-sm">Inloggen</button>
     </form>
   </div>
 </main>

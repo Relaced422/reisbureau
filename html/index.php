@@ -13,7 +13,6 @@ $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY creat
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HighFlights — Your High (Quality) Journey</title>
-  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>@import url('https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap');</style>
 </head>
@@ -124,6 +123,7 @@ $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY creat
 
 <!-- Footer -->
 <?php include __DIR__ . '/includes/footer.php'; ?>
+
 
 <script>
   const slider = document.getElementById('budget');
