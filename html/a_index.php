@@ -1,11 +1,11 @@
 <?
 require_once __DIR__ . '/db/auth.php';
-require_once __DIR__ . '/db/db.php';
 requireAdmin();
 
 $db = getDB();
 
 // CRUD
+// Gezien alle forms op 1 pagina staan request method gebruiken. Hoeft normaal niet maar had issues.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
@@ -87,7 +87,23 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
 
                 <div class="flex flex-col gap-3">
 
-                    <? foreach ($flights as $f): ?>
+                    <?
+                    foreach ($flights as $f) {
+                        $statusClass = 'status-cancelled';
+                        if ($f['active']) {
+                            $statusClass = 'status-confirmed';
+                        }
+
+                        $statusLabel = 'Inactief';
+                        if ($f['active']) {
+                            $statusLabel = 'Actief';
+                        }
+
+                        $activeChecked = '';
+                        if ($f['active']) {
+                            $activeChecked = 'checked';
+                        }
+                    ?>
                         <div class="bg-white border border-[#C8DFC9] rounded-xl overflow-hidden">
 
                             <div class="grid grid-cols-4 items-center gap-4 p-5">
@@ -99,12 +115,11 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
                                         <?= date('d-m-Y', strtotime($f['departure_date'])) ?>
                                     </div>
                                 </div>
-                                <div class="text-sm">€<?= number_format($f['price'], 2, ',', '.') ?> p.p.</div>
+                                <div class="text-sm">€<?= $f['price'] ?> p.p.</div>
                                 <div class="text-sm"><?= $f['seats'] ?> stoelen</div>
                                 <div>
-                                    <span
-                                        class="booking-status <?= $f['active'] ? 'status-confirmed' : 'status-cancelled' ?>">
-                                        <?= $f['active'] ? 'Actief' : 'Inactief' ?>
+                                    <span class="booking-status <?= $statusClass ?>">
+                                        <?= $statusLabel ?>
                                     </span>
                                 </div>
                             </div>
@@ -157,7 +172,7 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
 
                                 <div class="flex items-center gap-4">
                                     <label class="flex items-center gap-2 text-sm">
-                                        <input type="checkbox" name="active" value="1" <?= $f['active'] ? 'checked' : '' ?> /> Actief
+                                        <input type="checkbox" name="active" value="1" <?= $activeChecked ?> /> Actief
                                     </label>
                                     <button type="submit" class="btn btn-primary bg-green-500">💾 Opslaan</button>
                                 </div>
@@ -171,7 +186,9 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
                             </form>
 
                         </div>
-                    <? endforeach; ?>
+                    <?
+                    }
+                    ?>
 
                 </div>
             </section>
@@ -254,31 +271,48 @@ $bookings = $db->query("SELECT * FROM bookings ORDER BY created_at DESC")->fetch
                         </thead>
                         <tbody>
 
-                            <? foreach ($bookings as $b): ?>
+                            <?
+                            foreach ($bookings as $b) {
+                                $pendingSelected = '';
+                                if ($b['status'] === 'pending') {
+                                    $pendingSelected = 'selected';
+                                }
+
+                                $confirmedSelected = '';
+                                if ($b['status'] === 'confirmed') {
+                                    $confirmedSelected = 'selected';
+                                }
+
+                                $cancelledSelected = '';
+                                if ($b['status'] === 'cancelled') {
+                                    $cancelledSelected = 'selected';
+                                }
+                            ?>
                                 <tr class="border-t border-[#C8DFC9]">
                                     <td class="p-3 font-bold text-[#2e5435]"><?= htmlspecialchars($b['reference']) ?></td>
                                     <td class="p-3"><?= htmlspecialchars($b['user_name']) ?></td>
                                     <td class="p-3"><?= htmlspecialchars($b['destination_name']) ?></td>
                                     <td class="p-3"><?= date('d-m-Y', strtotime($b['departure_date'])) ?></td>
                                     <td class="p-3 text-center"><?= $b['travelers'] ?></td>
-                                    <td class="p-3 font-bold">€<?= number_format($b['total_price'], 2, ',', '.') ?></td>
+                                    <td class="p-3 font-bold">€<?= $b['total_price'] ?></td>
                                     <td class="p-3">
                                         <form method="post" class="flex gap-2">
                                             <input type="hidden" name="action" value="update_booking" />
                                             <input type="hidden" name="id" value="<?= $b['id'] ?>" />
                                             <select name="status"
                                                 class="border border-[#C8DFC9] rounded-md px-2 py-1 text-xs font-[Kadwa] bg-[#F8FAF5]">
-                                                <option value="pending" <?= $b['status'] === 'pending' ? 'selected' : '' ?>>In
+                                                <option value="pending" <?= $pendingSelected ?>>In
                                                     afwachting</option>
-                                                <option value="confirmed" <?= $b['status'] === 'confirmed' ? 'selected' : '' ?>>Bevestigd</option>
-                                                <option value="cancelled" <?= $b['status'] === 'cancelled' ? 'selected' : '' ?>>Geannuleerd</option>
+                                                <option value="confirmed" <?= $confirmedSelected ?>>Bevestigd</option>
+                                                <option value="cancelled" <?= $cancelledSelected ?>>Geannuleerd</option>
                                             </select>
-                                            <button type="submit" class="btn btn-primary"
-                                                style="padding:4px 10px;font-size:.78rem;">✓</button>
+                                            <button type="submit" class="btn btn-primary px-3 py-1 text-xs">✓</button>
                                         </form>
                                     </td>
                                 </tr>
-                            <? endforeach; ?>
+                            <?
+                            }
+                            ?>
 
                         </tbody>
                     </table>
