@@ -3,8 +3,10 @@ require_once __DIR__ . '/db/auth.php';
 
 $pdo = getDB();
 
-$flights = $pdo->query('SELECT * FROM flights WHERE active = 1 ORDER BY price ASC LIMIT 4')->fetchAll();
-$reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY created_at DESC LIMIT 3')->fetchAll();
+// destination_name en airline bestaan niet meer als kolom, dus via joins ophalen (AS = alias zodat de HTML gewoon blijft werken)
+$flights = $pdo->query('SELECT flights.*, destinations.name AS destination_name, airlines.name AS airline FROM flights JOIN destinations ON flights.destination_id = destinations.id JOIN airlines ON flights.airline_id = airlines.id WHERE flights.active = 1 ORDER BY flights.price ASC LIMIT 4')->fetchAll();
+$reviews = $pdo->query('SELECT reviews.*, users.first_name, users.last_name, destinations.name AS destination_name FROM reviews JOIN users ON reviews.user_id = users.id JOIN destinations ON reviews.destination_id = destinations.id WHERE reviews.validated = 1 ORDER BY reviews.created_at DESC LIMIT 3')->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +15,7 @@ $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY creat
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HighFlights — Your High (Quality) Journey</title>
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>@import url('https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap');</style>
 </head>
@@ -41,17 +44,17 @@ $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY creat
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <?php foreach ($flights as $f){  ?>
-      <a href="flight-detail.php" class="bg-white border border-gray-300 overflow-hidden flex flex-col no-underline">
+      <div class="bg-white border border-gray-300 overflow-hidden flex flex-col">
         <div class="bg-[#2e5435] h-24 flex items-center justify-center text-4xl">✈️</div>
         <div class="p-4 flex flex-col flex-1">
           <div class="font-bold text-[#2e5435] mb-1"><?= htmlspecialchars($f['destination_name']) ?></div>
           <div class="text-gray-400 text-xs mb-3"><?= htmlspecialchars($f['airline']) ?> · <?= date('d M Y', strtotime($f['departure_date'])) ?></div>
           <div class="flex items-center justify-between mt-auto">
             <span class="font-bold text-[#2e5435]">from €<?= number_format($f['price'], 0, ',', '.') ?></span>
-            <span class="text-xs border border-[#2e5435] text-[#2e5435] px-2 py-1 hover:bg-[#2e5435] hover:text-white">View →</span>
+            <a href="flight-detail.php?id=<?= $f['id'] ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Boek →</a>
           </div>
         </div>
-      </a>
+      </div>
       <?php }; ?>
 
       <?php if (empty($flights)): ?>
@@ -103,11 +106,9 @@ $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY creat
       <div class="bg-white border border-gray-200 p-4 flex flex-col gap-2">
         <div class="flex items-start justify-between">
           <div>
-            <div class="font-bold text-[#2e5435] text-sm"><?= htmlspecialchars($r['user_name']) ?></div>
-            <!-- AI SUGGESTIE -->
+            <div class="font-bold text-[#2e5435] text-sm"><?= htmlspecialchars($r['first_name'] . ' ' . $r['last_name']) ?></div>
             <div class="text-gray-400 text-xs"><?= date('M Y', strtotime($r['created_at'])) ?> · <?= htmlspecialchars($r['destination_name']) ?></div>
           </div>
-          <!-- AI SUGGESTIE -->
           <div class="text-yellow-400 text-sm"><?= str_repeat('★', $r['rating']) . str_repeat('☆', 5 - $r['rating']) ?></div>
         </div>
         <p class="text-gray-600 text-sm">"<?= htmlspecialchars($r['review_text']) ?>"</p>
@@ -123,7 +124,6 @@ $reviews = $pdo->query('SELECT * FROM reviews WHERE validated = 1 ORDER BY creat
 
 <!-- Footer -->
 <?php include __DIR__ . '/includes/footer.php'; ?>
-
 
 <script>
   const slider = document.getElementById('budget');

@@ -8,7 +8,8 @@ $return = $_GET['return'] ?? '';
 $travelers = $_GET['travelers'] ?? 1;
 $budget = $_GET['budget'] ?? 99999;
 
-$stmt = $pdo->prepare('SELECT * FROM flights WHERE active = 1 AND destination_name LIKE ? AND price <= ? ORDER BY price ASC');
+// zoeken gaat nu op destinations.name (de naam staat niet meer in flights)
+$stmt = $pdo->prepare('SELECT flights.*, destinations.name AS destination_name, airlines.name AS airline FROM flights JOIN destinations ON flights.destination_id = destinations.id JOIN airlines ON flights.airline_id = airlines.id WHERE flights.active = 1 AND destinations.name LIKE ? AND flights.price <= ? ORDER BY flights.price ASC');
 $stmt->execute(['%' . $destination . '%', $budget]);
 $flights = $stmt->fetchAll();
 ?>
@@ -32,13 +33,13 @@ $flights = $stmt->fetchAll();
   <?php include __DIR__ . '/includes/header.php'; ?>
 
   <?php include __DIR__ . '/includes/searchbar.php'; ?>
-  <section class="py-16 px-6">
+  <section class="py-8 px-4">
     <div class="max-w-6xl mx-auto">
-      <h1 class="text-2xl md:text-3xl font-bold text-[#2e5435] mb-2" style="font-family:'Kadwa',serif;">
+      <h1 class="text-2xl font-bold text-[#2e5435] mb-4" style="font-family:'Kadwa',serif;">
         Flights to <?php echo htmlspecialchars($destination); ?>
       </h1>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
         <?php
         if (empty($flights)) {
@@ -49,26 +50,23 @@ $flights = $stmt->fetchAll();
           $total_price = $f['price'] * $travelers;
         ?>
 
-          <a href="flight-detail.php?id=<?php echo $f['id']; ?>"
-            class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col no-underline">
-            <div class="bg-[#2e5435] h-32 flex items-center justify-center text-5xl">✈️</div>
-            <div class="p-5 flex flex-col flex-1">
-              <div class="font-bold text-[#2e5435] text-lg mb-1">
+          <div class="bg-white border border-gray-300 overflow-hidden flex flex-col">
+            <div class="bg-[#2e5435] h-24 flex items-center justify-center text-4xl">✈️</div>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="font-bold text-[#2e5435] mb-1">
                 <?php echo htmlspecialchars($f['destination_name']); ?>
               </div>
-              <div class="text-gray-400 text-xs mb-4">
+              <div class="text-gray-400 text-xs mb-3">
                 <?php echo htmlspecialchars($f['airline']); ?> ·
                 <?php echo date('d M Y', strtotime($f['departure_date'])); ?>
               </div>
               <div class="flex items-center justify-between mt-auto">
                 <span class="font-bold text-[#2e5435]">€<?php echo $total_price; ?></span>
-                <span
-                  class="text-xs border border-[#2e5435] text-[#2e5435] rounded-lg px-3 py-1 hover:bg-[#2e5435] hover:text-white transition-colors">
-                  View →
-                </span>
+                <a href="booking.php?id=<?php echo $f['id']; ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Boek →</a>
+                <a href="flight-detail.php?id=<?php echo $f['id']; ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Info →</a>
               </div>
             </div>
-          </a>
+          </div>
 
         <?php
         }
