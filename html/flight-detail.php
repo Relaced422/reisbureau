@@ -3,7 +3,8 @@ require_once __DIR__ . '/db/auth.php';
 $pdo = getDB();
 
 $id = $_GET['id'] ?? 0;
-$stmt = $pdo->prepare('SELECT * FROM flights WHERE id = ? AND active = 1');
+// joins voor de naam en airline, HTML kan hetzelfde blijven door de aliases
+$stmt = $pdo->prepare('SELECT flights.*, destinations.name AS destination_name, airlines.name AS airline FROM flights JOIN destinations ON flights.destination_id = destinations.id JOIN airlines ON flights.airline_id = airlines.id WHERE flights.id = ? AND flights.active = 1');
 $stmt->execute([$id]);
 $flight = $stmt->fetch();
 
