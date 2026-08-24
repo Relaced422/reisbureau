@@ -32,7 +32,7 @@ $flights = $stmt->fetchAll();
 
   <?php include __DIR__ . '/includes/header.php'; ?>
 
-  <?php include __DIR__ . '/includes/searchbar.php'; ?>
+  <div class="flex justify-center mt-10"><?php include __DIR__ . '/includes/searchbar.php'; ?></div>
   <section class="py-8 px-4">
     <div class="max-w-6xl mx-auto">
       <h1 class="text-2xl font-bold text-[#2e5435] mb-4" style="font-family:'Kadwa',serif;">
