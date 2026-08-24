@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section class="py-16 px-6">
   <div class="max-w-xl mx-auto">
-    <h1 class="text-2xl font-bold text-[#2e5435] mb-8" style="font-family:'Kadwa',serif;">Contact</h1>
+    <h1 class="text-2xl font-bold text-[#2e5435] mb-8" style="font-family:'Kadwa',serif;">Neem contact met ons op!</h1>
 
     <?php if ($success): ?>
       <p class="bg-green-50 border border-green-200 text-green-700 rounded-xl px-4 py-3 text-sm">
