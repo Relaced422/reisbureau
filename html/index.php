@@ -51,7 +51,8 @@ $reviews = $pdo->query('SELECT reviews.*, users.first_name, users.last_name, des
           <div class="text-gray-400 text-xs mb-3"><?= htmlspecialchars($f['airline']) ?> · <?= date('d M Y', strtotime($f['departure_date'])) ?></div>
           <div class="flex items-center justify-between mt-auto">
             <span class="font-bold text-[#2e5435]">from €<?= number_format($f['price'], 0, ',', '.') ?></span>
-            <a href="flight-detail.php?id=<?= $f['id'] ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Boek →</a>
+            <a href="flight-detail.php?id=<?= $f['id'] ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Meer info</a>
+            <a href="booking.php?id=<?= $f['id'] ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Boek →</a>
           </div>
         </div>
       </div>
