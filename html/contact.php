@@ -54,20 +54,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <label class="text-sm font-semibold text-[#2e5435]">Naam</label>
           <input type="text" name="name" required
             value="<?= htmlspecialchars($_POST['name'] ?? '') ?>"
-            class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#2e5435]" />
+            class="border border-black rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#2e5435] bg-gray-200" />
         </div>
 
         <div class="flex flex-col gap-1">
           <label class="text-sm font-semibold text-[#2e5435]">E-mailadres</label>
           <input type="email" name="email" required
             value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-            class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#2e5435]" />
+            class="border border-black rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#2e5435] bg-gray-200" />
         </div>
 
         <div class="flex flex-col gap-1">
           <label class="text-sm font-semibold text-[#2e5435]">Bericht</label>
           <textarea name="message" rows="5" required
-            class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#2e5435] resize-none"><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
+            class="border border-black rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#2e5435] resize-none bg-gray-200"><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
         </div>
 
         <button type="submit"
