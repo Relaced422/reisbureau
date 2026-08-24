@@ -62,8 +62,8 @@ $flights = $stmt->fetchAll();
               </div>
               <div class="flex items-center justify-between mt-auto">
                 <span class="font-bold text-[#2e5435]">€<?php echo $total_price; ?></span>
-                <a href="booking.php?id=<?php echo $f['id']; ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Boek →</a>
                 <a href="flight-detail.php?id=<?php echo $f['id']; ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Info →</a>
+                <a href="booking.php?id=<?php echo $f['id']; ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Boek →</a>
               </div>
             </div>
           </div>
