@@ -1,3 +1,5 @@
+test
+
 <?
 require_once __DIR__ . '/db/auth.php';
 requireAdmin();
