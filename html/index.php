@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/db/auth.php';
+require_once __DIR__ . '/config.php';
+require_once ROOT_PATH .'/db/auth.php';
 
 $pdo = getDB();
 
@@ -15,7 +16,6 @@ $reviews = $pdo->query('SELECT reviews.*, users.first_name, users.last_name, des
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HighFlights — Your High (Quality) Journey</title>
-  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>@import url('https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap');</style>
 </head>
@@ -51,7 +51,7 @@ $reviews = $pdo->query('SELECT reviews.*, users.first_name, users.last_name, des
           <div class="text-gray-400 text-xs mb-3"><?= htmlspecialchars($f['airline']) ?> · <?= date('d M Y', strtotime($f['departure_date'])) ?></div>
           <div class="flex items-center justify-between mt-auto">
             <span class="font-bold text-[#2e5435]">from €<?= number_format($f['price'], 0, ',', '.') ?></span>
-            <a href="flight-detail.php?id=<?= $f['id'] ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Meer info</a>
+            <a href="/handlers/flight-detail.php?id=<?= $f['id'] ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Meer info</a>
             <a href="booking.php?id=<?= $f['id'] ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Boek →</a>
           </div>
         </div>

@@ -1,4 +1,5 @@
 <?
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db/auth.php';
 requireAdmin();
 
@@ -78,21 +79,16 @@ $airlines = $db->query("SELECT * FROM airlines ORDER BY name ASC")->fetchAll();
 
 <body class="bg-[#F8FAF5]">
 
-    <div class="bg-[#2e5435] p-5 flex items-center justify-between">
-        <span class="text-[#D6F8BB] font-bold text-lg">HighFlights — Admin</span>
-        <a href="/logout.php" class="text-[#A3C7A7] text-sm hover:text-white">Uitloggen →</a>
-    </div>
+    <header>
+        <?include('includes/header.php')?>
+    </header>
 
     <div class="flex justify-center py-10">
         <div class="w-[90%] max-w-[1100px] flex flex-col gap-12">
-
-
             <!-- VLUCHTEN -->
             <section>
                 <h2 class="text-xl font-bold mb-4 text-[#2e5435]">✈️ Vluchten</h2>
-
                 <div class="flex flex-col gap-3">
-
                     <?
                     foreach ($flights as $f) {
                         $statusClass = 'status-cancelled';

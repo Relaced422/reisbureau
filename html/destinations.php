@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db/auth.php';
 $pdo = getDB();
 
@@ -21,7 +22,6 @@ $flights = $stmt->fetchAll();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HighFlights — Destinations</title>
-  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap');
@@ -62,7 +62,7 @@ $flights = $stmt->fetchAll();
               </div>
               <div class="flex items-center justify-between mt-auto">
                 <span class="font-bold text-[#2e5435]">€<?php echo $total_price; ?></span>
-                <a href="flight-detail.php?id=<?php echo $f['id']; ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Info →</a>
+                <a href="/handlers/flight-detail.php?id=<?php echo $f['id']; ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Info →</a>
                 <a href="booking.php?id=<?php echo $f['id']; ?>" class="text-xs bg-[#2e5435] text-white px-3 py-1 hover:bg-[#1e3b24]">Boek →</a>
               </div>
             </div>

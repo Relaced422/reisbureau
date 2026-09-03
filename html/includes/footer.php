@@ -1,3 +1,4 @@
+<?require_once dirname(__DIR__) . '/config.php';?>
 <footer class="bg-[#1e3b24] text-[#a3c7a7] py-8 px-4 mt-8 border-t-2 border-[#2e5435]">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">

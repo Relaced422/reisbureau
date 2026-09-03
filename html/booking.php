@@ -1,4 +1,5 @@
 <?
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db/auth.php';
 requireLogin();
 $pdo = getDB();
