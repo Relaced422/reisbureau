@@ -1,7 +1,8 @@
 <?php
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db/auth.php';
 
-// Al ingelogd? Doorsturen
+// Doorsturen als al ingelogd is.
 if (isLoggedIn()) {
     header('Location: /index.php');
     exit;
@@ -11,25 +12,30 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_name = trim($_POST['first_name'] ?? '');
-    $last_name  = trim($_POST['last_name']  ?? '');
-    $email      = trim($_POST['email']      ?? '');
-    $password   = $_POST['password']        ?? '';
+    $last_name  = trim($_POST['last_name'] ?? '');
+    $email      = trim($_POST['email'] ?? '');
+
+    $plainPassword  = $_POST['password'] ?? '';
+    $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
 
     $registered = register([
         'first_name' => $first_name,
         'last_name'  => $last_name,
         'email'      => $email,
-        'password'   => $password,
+        'password'   => $hashedPassword,
     ]);
 
     if ($registered) {
-        login($email, $password);
+        login($email, $plainPassword);
+
         header('Location: /account.php');
         exit;
     } else {
         $error = 'Dit e-mailadres is al in gebruik.';
     }
 }
+// ToDO: password hash vergelijken met ingevoerd wachtwoord bij inloggen.
+
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -37,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registreren — HighFlights</title>
-  <link rel="stylesheet" href="/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>@import url('https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap');</style>
 </head>

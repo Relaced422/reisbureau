@@ -1,3 +1,4 @@
+<?require_once dirname(__DIR__) . '/config.php';?>
 <div class="bg-white border border-gray-300 p-5 text-left rounded-xl">
         <form action="destinations.php" method="get">
 

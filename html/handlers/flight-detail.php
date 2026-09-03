@@ -1,5 +1,6 @@
 <?
-require_once __DIR__ . '/db/auth.php';
+require_once dirname(__DIR__) . '/config.php';
+require_once __DIR__ . '/../db/auth.php';
 $pdo = getDB();
 
 $id = $_GET['id'] ?? 0;
@@ -20,7 +21,6 @@ if (!$flight) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vlucht naar <?= htmlspecialchars($flight['destination_name']) ?> — HighFlights</title>
-    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap');

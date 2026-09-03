@@ -1,4 +1,6 @@
-<header class="bg-[#A3C7A7] flex flex-col md:flex-row items-center justify-between px-4 py-3 gap-3 border-b-2 border-[#78B183]">
+<?require_once dirname(__DIR__) . '/config.php';?>
+<header
+    class="bg-[#A3C7A7] flex flex-col md:flex-row items-center justify-center px-4 py-3 gap-[20vw] border-b-2 border-[#78B183]">
     <a href="index.php">
         <img src="img/parts/logo.png" alt="HighFlights logo" class="w-[160px] max-w-full">
     </a>
@@ -30,17 +32,32 @@
             </li>
         </ul>
     </nav>
-    <? if (!isLoggedIn()) { ?>
-        <a href="login.php">
-            <div class="px-4 py-2 rounded bg-[#497F53] text-white">
-                Log in
-            </div>
-        </a>
-    <? } else { ?>
-        <a href="logout.php">
-            <div class="px-4 py-2 rounded bg-[#497F53] text-white">
-                Log uit
-            </div>
-        </a>
-    <? } ?>
+    <div class="flex gap-2">
+        <? if (!isLoggedIn()) { ?>
+            <a href="login.php">
+                <div class="px-4 py-2 rounded bg-[#497F53] text-white">
+                    Log in
+                </div>
+            </a>
+        <? } else { ?>
+            <? if (isAdmin()) { ?>
+                <div class="flex justify-between gap-2"><a href="a_index.php">
+                        <div class="px-4 py-2 rounded bg-[#497F53] text-white">
+                            Admin paneel
+                        </div>
+                    </a>
+                <? } ?>
+                <a href="account.php">
+                    <div class="px-4 py-2 rounded bg-[#497F53] text-white">
+                        Account
+                    </div>
+                </a>
+                <a href="logout.php">
+                    <div class="px-4 py-2 rounded bg-[#497F53] text-white">
+                        Log uit
+                    </div>
+                </a>
+            <? } ?>
+        </div>
+    </div>
 </header>
