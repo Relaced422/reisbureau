@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="bg-[#f8f5ef]">
 
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include ROOT_PATH . '/includes/header.php'; ?>
 
 <section class="py-16 px-6">
   <div class="max-w-xl mx-auto">

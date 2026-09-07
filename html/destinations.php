@@ -30,7 +30,7 @@ $flights = $stmt->fetchAll();
 
 <body class="bg-[#f8f5ef]">
 
-  <?php include __DIR__ . '/includes/header.php'; ?>
+  <?php include ROOT_PATH . '/includes/header.php'; ?>
 
   <div class="flex justify-center mt-10"><?php include __DIR__ . '/includes/searchbar.php'; ?></div>
   <section class="py-8 px-4">

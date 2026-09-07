@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/config.php';
-require_once ROOT_PATH .'/db/auth.php';
+require_once ROOT_PATH . '/db/auth.php';
 
 $pdo = getDB();
 
@@ -21,7 +21,7 @@ $reviews = $pdo->query('SELECT reviews.*, users.first_name, users.last_name, des
 </head>
 <body class="bg-[#f8f5ef]">
 
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include ROOT_PATH . '/includes/header.php'; ?>
 
 <!-- ── Hero ── -->
 <section class="bg-[#2e5435] py-12 px-4">
@@ -32,7 +32,7 @@ $reviews = $pdo->query('SELECT reviews.*, users.first_name, users.last_name, des
     <p class="text-[#a3c7a7] mb-6">Your comfort is our top priority</p>
 
     <!-- Search card -->
-    <?php include __DIR__ . '/includes/searchbar.php'; ?>
+    <?php include ROOT_PATH . '/includes/searchbar.php'; ?>
   </div>
 </section>
 
@@ -124,7 +124,7 @@ $reviews = $pdo->query('SELECT reviews.*, users.first_name, users.last_name, des
 </section>
 
 <!-- Footer -->
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include ROOT_PATH . '/includes/footer.php'; ?>
 
 <script>
   const slider = document.getElementById('budget');

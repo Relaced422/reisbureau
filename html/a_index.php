@@ -1,6 +1,6 @@
 <?
 require_once __DIR__ . '/config.php';
-require_once __DIR__ . '/db/auth.php';
+require_once ROOT_PATH . '/db/auth.php';
 requireAdmin();
 
 $db = getDB();
@@ -80,7 +80,7 @@ $airlines = $db->query("SELECT * FROM airlines ORDER BY name ASC")->fetchAll();
 <body class="bg-[#F8FAF5]">
 
     <header>
-        <?include('includes/header.php')?>
+        <?php include ROOT_PATH . '/includes/header.php'; ?>
     </header>
 
     <div class="flex justify-center py-10">
