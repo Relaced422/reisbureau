@@ -77,7 +77,7 @@ require_once __DIR__ . '/db/auth.php';
   </section>
 
   <!-- ── Footer ── -->
-  <?php include __DIR__ . '/includes/footer.php'; ?>
+  <?php include ROOT_PATH . '/includes/footer.php'; ?>
 
 </body>
 

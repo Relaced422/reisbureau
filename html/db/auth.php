@@ -1,7 +1,7 @@
 <?php
 
 require_once dirname(__DIR__) . '/config.php';
-require_once dirname(__DIR__) . '/db/db.php';
+ROOT_PATH . '/db/db.php';
 
 // Start sessie als dat nog niet gebeurd is (AI suggestie)
 if (session_status() === PHP_SESSION_NONE) {

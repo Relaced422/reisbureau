@@ -29,7 +29,7 @@ if (!$flight) {
 
 <body class="bg-[#f8f5ef]">
 
-    <? include __DIR__ . '/../includes/header.php'; ?>
+    <? include ROOT_PATH . '/includes/header.php'; ?>
 
     <div class="bg-[#2e5435] py-12 px-6">
         <div class="max-w-3xl mx-auto">
@@ -62,7 +62,7 @@ if (!$flight) {
 
     </div>
 
-    <? include __DIR__ . '/../includes/footer.php'; ?>
+    <?php include ROOT_PATH . '/includes/footer.php'; ?>
 
 </body>
 

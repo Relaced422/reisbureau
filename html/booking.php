@@ -96,7 +96,7 @@ $bookings = $bookings->fetchAll();
     }
 </script>
 
-<? include __DIR__ . '/includes/footer.php'; ?>
+<?php include ROOT_PATH . '/includes/footer.php'; ?>
 
 </body>
 </html>

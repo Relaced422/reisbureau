@@ -76,7 +76,7 @@ $flights = $stmt->fetchAll();
     </div>
   </section>
 
-  <?php include __DIR__ . '/includes/footer.php'; ?>
+  <?php include ROOT_PATH . '/includes/footer.php'; ?>
 
 </body>
 

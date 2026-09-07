@@ -101,6 +101,9 @@ $bookings = $bookingstmt->fetchall();
             </div>
         </div>
     </main>
+    <footer>
+        <?php include ROOT_PATH . '/includes/footer.php'; ?>
+    </footer>
 </body>
 
 </html>
