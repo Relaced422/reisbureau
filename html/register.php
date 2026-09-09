@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Dit e-mailadres is al in gebruik.';
     }
 }
-// ToDO: password hash vergelijken met ingevoerd wachtwoord bij inloggen.
 
 ?>
 <!DOCTYPE html>

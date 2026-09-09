@@ -18,7 +18,7 @@ require_once __DIR__ . '/db/auth.php';
 
 <body class="bg-[#f8f5ef]">
 
-  <?php include __DIR__ . '/includes/header.php'; ?>
+  <?php include ROOT_PATH . '/includes/header.php'; ?>
 
   <section class="bg-[#2e5435] min-h-[40vh] flex items-center">
     <div class="max-w-5xl mx-auto px-6 py-20 w-full text-center">
@@ -77,7 +77,7 @@ require_once __DIR__ . '/db/auth.php';
   </section>
 
   <!-- ── Footer ── -->
-  <?php include __DIR__ . '/includes/footer.php'; ?>
+  <?php include ROOT_PATH . '/includes/footer.php'; ?>
 
 </body>
 

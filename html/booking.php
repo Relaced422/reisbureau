@@ -37,7 +37,7 @@ $bookings = $bookings->fetchAll();
 </head>
 <body class="bg-gray-100">
 
-<? include __DIR__ . '/includes/header.php'; ?>
+<?php include ROOT_PATH . '/includes/header.php'; ?>
 
 <div class="max-w-lg mx-auto mt-8 px-4">
 
@@ -96,7 +96,7 @@ $bookings = $bookings->fetchAll();
     }
 </script>
 
-<? include __DIR__ . '/includes/footer.php'; ?>
+<?php include ROOT_PATH . '/includes/footer.php'; ?>
 
 </body>
 </html>

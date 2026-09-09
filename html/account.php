@@ -30,7 +30,7 @@ $bookings = $bookingstmt->fetchall();
 </head>
 
 <body>
-    <header><? include('includes/header.php') ?></header>
+    <header><?php include ROOT_PATH . '/includes/header.php'; ?></header>
     <main>
         <div class="flex flex-wrap">
             <div class="flex">
@@ -101,6 +101,9 @@ $bookings = $bookingstmt->fetchall();
             </div>
         </div>
     </main>
+    <footer>
+        <?php include ROOT_PATH . '/includes/footer.php'; ?>
+    </footer>
 </body>
 
 </html>
